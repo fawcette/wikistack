@@ -3,9 +3,11 @@ const app = express();
 const morgan = require("morgan");
 const main = require("./views/main");
 const { db, User, Page } = require("./models");
+const wikiRouter = require("./routes/wiki");
+const userRouter = require("./routes/user");
 
 app.use(morgan("dev"));
-
+app.use('/wiki', wikiRouter);
 app.use(express.static(__dirname + "/views"));
 
 app.get("/", (req, res) => {
